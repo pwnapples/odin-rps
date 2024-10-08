@@ -1,10 +1,14 @@
 "use strict";
 
+let roundNum = 0;
+let humanScore = 0;
+let computerScore = 0;
+
 console.log("Welcome to a friendly(ish) game of rock, paper, scissors!");
 
 function getHumanChoice() {
   let userChoice = prompt("Choose between rock/paper/scissors: ");
-
+    
   userChoice = userChoice.toLowerCase();
 
   if(userChoice == "rock") {
@@ -30,34 +34,29 @@ function getComputerChoice() {
   }
 }
 
-let roundNum = 0;
-
 function playGame() {
-  let humanScore = 0;
-  let computerScore = 0;
-
   function playRound(humanChoice, computerChoice) {
     humanChoice = getHumanChoice();
     computerChoice = getComputerChoice();
 
     if(humanChoice == "rock" && computerChoice == "scissors") {
-      humanScore += 1;
       console.log(`You WIN! ${humanChoice} beats ${computerChoice}.`);
+      humanScore += 1;
     } else if(humanChoice == "rock" && computerChoice == "rock") {
       console.log("DRAW!");
     } else if(humanChoice == "paper" && computerChoice == "rock") {
-      humanScore += 1;
       console.log(`You WIN! ${humanChoice} beats ${computerChoice}.`);
+      humanScore += 1;
     } else if(humanChoice == "paper" && computerChoice == "paper") {
       console.log("DRAW!");
     }  else if(humanChoice == "scissors" && computerChoice == "paper") {
+      console.log(`You WIN! ${humanChoice} beat ${computerChoice}.`);
       humanScore += 1;
-      console.log(`You WIN! ${humanChoice} beats ${computerChoice}.`);
     } else if(humanChoice == "scissors" && computerChoice == "scissors") {
       console.log("DRAW!");
     } else {
-      computerScore += 1;
       console.log(`You LOSE! ${computerChoice} beats ${humanChoice}.`);
+      computerScore += 1;
     }
 
     roundNum += 1;
@@ -70,6 +69,8 @@ function playGame() {
       } else {
         console.log("You won! Congratulations. :)");
       }
+
+      console.log(`Final score: ${humanScore} - ${computerScore}`)
     }
   }
 
